@@ -14,6 +14,16 @@
     // 利用するデータベースを指定（存在しなければ生成）
     var TestClass = ncmb.DataStore("FetchTest");
 
+    function fetch() {
+        var TestClass = ncmb.DataStore("FetchTest");
+        TestClass.fetch()
+     .then(function(results){
+        var data=results.get("text");
+        var update=results.get("updateDate");
+        $("#message").html(data + ":" + update);
+        })
+    }
+
     function register() {
       // 登録するレコードを用意
       var testClass = new TestClass();
@@ -30,6 +40,7 @@
         $("#message").html("Failed to create new object, with error code: " + JSON.stringify(err));
       })
     }
+
     </script>
 </head>
 <body>
